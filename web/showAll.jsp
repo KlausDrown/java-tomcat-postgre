@@ -8,14 +8,15 @@
     <title>ShowAll</title>
 </head>
 <body>
-<h2>All Users</h2>
-<p>Page: ${numbOfPage} ---</p>
-<form action="/showAll" method="post">
-    <label for="pag">page:
-        <input type="number" name="pag" id="pag">
-    </label><br/>
-    <input type="submit" value="Send">
-</form>
+<h2 align="center">All Users</h2>
+<h3>Available pages: ${numbOfPage} ---</h3>
+<select onchange="window.location.href = this.options[this.selectedIndex].value">
+    <option value="" label="select a page"></option>
+    <c:forEach var="pager" items="${requestScope.selectPage}">
+        <option value="?pag=${pager}" label="page: ${pager}"> page${pager}</option>
+    </c:forEach>
+</select>
+<h2>Your page: ${param.pag}</h2>
 <table>
 <tr><th>Login</th>            <th>Name</th>            <th>ID</th></tr>
 <p><a href=index.jsp>home page</a></p>

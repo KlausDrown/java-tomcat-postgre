@@ -3,11 +3,22 @@
 <html>
   <head>
     <title>Manage Archive</title>
+    <style>
+      body{
+        background-color: cornflowerblue;
+      }
+    </style>
   </head>
   <body>
-  <h2>Manage Users</h2>
-  <a href=registration>Create new user</a><br /> <br />
-  <a href=showAll>Show all users</a> <br /> <br />
-  <a href=deleting>deleting user</a> <br /> <br />
+  <p align="center" style="font-size:60px"> Select a version</p>
+  <div align="center" style="font-size:30px;">
+
+    <a style="margin-right:70px;" href=oldVersion>Old version</a>
+
+    <B style="margin-right:10px;"> or</B>
+
+    <a style="margin-left:60px;" href="newVersion"> New version</a>
+
+  </div>
   </body>
 </html>
