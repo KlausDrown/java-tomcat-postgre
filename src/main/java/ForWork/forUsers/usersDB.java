@@ -6,6 +6,23 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class usersDB {
+    public static int selectCount() {
+        int count = 0;
+        try{
+            Class.forName("org.postgresql.Driver");
+            try (Connection connection = MyConnection.get()){
+
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT count(*) FROM users");
+                if (resultSet.next());
+                count = resultSet.getInt(1);
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        return count;
+    }
 
     public static int insert(Users users){
 
@@ -30,7 +47,7 @@ public class usersDB {
 
     }
 
-    public static ArrayList<Users> select() {
+    public static ArrayList<Users> select(int page) {
 
         ArrayList<Users> users = new ArrayList<Users>();
         try{
@@ -38,7 +55,7 @@ public class usersDB {
             try (Connection connection = MyConnection.get()){
 
                 Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM users ORDER BY name " + "limit "+(5)+" offset "+((page-1)*5));
                 while(resultSet.next()){
                     int id = resultSet.getInt(1);
                     String name =resultSet.getString(2);
