@@ -2,9 +2,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>perviy</title>
+    <title>Manage Archive</title>
   </head>
   <body>
-  <h1>helloworld</h1>
+  <h2>Manage Users</h2>
+  <a href=registration>Create new user</a><br /> <br />
+  <a href=showAll>Show all users</a> <br /> <br />
+  <a href=deleting>deleting user</a> <br /> <br />
   </body>
 </html>
