@@ -17,7 +17,7 @@
 
     <B style="margin-right:10px;"> or</B>
 
-    <a style="margin-left:60px;" href="newVersion"> New version</a>
+    <a style="margin-left:60px;" href="newVersion?employeePage=0&departmentPage=0"> New version</a>
 
   </div>
   </body>
