@@ -31,7 +31,7 @@
 <h1 align="center" style="font-size:50px;margin-top:23px;">Main Page</h1>
 
 
-<h2 style="font-size:40px;margin-top:23px;margin-left:20px;">Add a user or company: </h2>
+<h2 style="font-size:40px;margin-top:23px;margin-left:20px;">Add a user or department: </h2>
 <div align="center" style="margin-top:23px;margin-left:45px;">
 
     <h3 style="font-size:30px;">Add user</h3>
