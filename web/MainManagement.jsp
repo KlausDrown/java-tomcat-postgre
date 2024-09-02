@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>newVersion</title>
+    <title>MainManagement</title>
     <style>
         body{
             background-color: cornflowerblue;
@@ -35,7 +35,7 @@
 <div align="center" style="margin-top:23px;margin-left:45px;">
 
     <h3 style="font-size:30px;">Add user</h3>
-    <form action="/newVersion" method="post">
+    <form action="/MainManagement" method="post">
         <table border="opx; ">
 
 
@@ -75,7 +75,7 @@
     </form>
 
     <h3 style="font-size:30px;">Add department</h3>
-    <form action="/newVersion" method="post">
+    <form action="/MainManagement" method="post">
         <label for="companyName">department name:
             <input type="text" name="companyName" id="companyName">
         </label></br>
@@ -89,7 +89,7 @@
 
     <h3 style="font-size:30px;">User</h3>
     <div align="left"style="margin-left:20px;">
-        <form action="/newVersion" method="post">
+        <form action="/MainManagement" method="post">
             <label>
                 <input type="number" name="employeeDelete" id="employeeDelete">
                 <input type="submit" name="sender" value="Delete an employee by id">
@@ -127,7 +127,7 @@
 
     <h3 style="font-size:30px;">Department</h3>
     <div align="left" style="margin-left:20px;">
-        <form action="/newVersion" method="post">
+        <form action="/MainManagement" method="post">
             <label for="departmentDelete">
                 <input type="number" name="departmentDelete" id="departmentDelete">
             </label>

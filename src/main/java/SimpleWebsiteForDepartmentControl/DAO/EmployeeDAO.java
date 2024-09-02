@@ -1,7 +1,7 @@
-package ForWork.forUsers2;
+package SimpleWebsiteForDepartmentControl.DAO;
 
-import ForWork.forUsers.Users;
-import ForWork.util.MyConnection;
+
+import SimpleWebsiteForDepartmentControl.util.SimpleConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,13 +9,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class employeeDB {
+public class EmployeeDAO {
 
     public static int delete(int id) {
 
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get()){
+            try (Connection connection = SimpleConnectionPool.get()){
 
                 String sql = "DELETE FROM employee WHERE id = ?";
                 try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
@@ -36,7 +36,7 @@ public class employeeDB {
 
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get())
+            try (Connection connection = SimpleConnectionPool.get())
             {
                 String sql = "INSERT INTO employee (name, login, password, department_id) Values (?, ?, ?,?)";
                 try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
@@ -65,7 +65,7 @@ public class employeeDB {
         int count = 0;
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get()){
+            try (Connection connection = SimpleConnectionPool.get()){
 
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT count(*) FROM employee");
@@ -85,7 +85,7 @@ public class employeeDB {
 
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get()){
+            try (Connection connection = SimpleConnectionPool.get()){
 
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT e.id,e.name, login, password ,d.name  FROM employee e, department d where e.department_id = d.id;");

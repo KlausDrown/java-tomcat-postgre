@@ -1,10 +1,10 @@
-package ForWork;
+package SimpleWebsiteForDepartmentControl;
 
 
-import ForWork.forUsers2.departmentDB;
-import ForWork.forUsers2.Department;
-import ForWork.forUsers2.Employee;
-import ForWork.forUsers2.employeeDB;
+import SimpleWebsiteForDepartmentControl.DAO.DepartmentDAO;
+import SimpleWebsiteForDepartmentControl.DAO.Department;
+import SimpleWebsiteForDepartmentControl.DAO.Employee;
+import SimpleWebsiteForDepartmentControl.DAO.EmployeeDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,14 +16,14 @@ import java.util.ArrayList;
 
 //employeePage
 //departmentPage
-@WebServlet("/newVersion")
-public class newVersion extends HttpServlet {
+@WebServlet("/")
+public class MainManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("currentEmployeePage", req.getParameter("employeePage"));
         req.setAttribute("currentDepartmentPage", req.getParameter("departmentPage"));
             int employeePage = 0;
-            int employeeCount = employeeDB.selectCount();
+            int employeeCount = EmployeeDAO.selectCount();
             int employeePageNumber = employeeCount / 5;
             if (employeeCount % 5 != 0) {
                 employeePageNumber++;
@@ -35,7 +35,7 @@ public class newVersion extends HttpServlet {
 
 
         int departmentPage = 0;
-        int departmentCount = departmentDB.selectCount();
+        int departmentCount = DepartmentDAO.selectCount();
         int departmentPageNumber = departmentCount / 5;
         if (departmentCount % 5 != 0) {
             departmentPageNumber++;
@@ -48,13 +48,13 @@ public class newVersion extends HttpServlet {
         req.setAttribute("employeePageNumber", employeePageNumber);
         req.setAttribute("departmentPageNumber", departmentPageNumber);
 
-        ArrayList<Department> departments = departmentDB.select();
-        ArrayList<Employee> employees = employeeDB.select();
+        ArrayList<Department> departments = DepartmentDAO.select();
+        ArrayList<Employee> employees = EmployeeDAO.select();
 
         req.setAttribute("employees", employees);
         req.setAttribute("departments", departments);
 
-            req.getRequestDispatcher("newVersion.jsp").forward(req,resp);
+            req.getRequestDispatcher("MainManagement.jsp").forward(req,resp);
 
 
     }
@@ -70,7 +70,7 @@ public class newVersion extends HttpServlet {
                 String password = req.getParameter("password");
                 int department_id = Integer.parseInt(req.getParameter("selection"));
                 Employee employee = new Employee(name, login, password, department_id);
-                employeeDB.insert(employee);
+                EmployeeDAO.insert(employee);
             }catch (Exception e){
 
             }finally {
@@ -84,7 +84,7 @@ public class newVersion extends HttpServlet {
             try {
                 String name = req.getParameter("companyName");
                 Department department = new Department(name);
-                departmentDB.insert(department);
+                DepartmentDAO.insert(department);
             }catch (Exception e){
 
             }finally {
@@ -96,7 +96,7 @@ public class newVersion extends HttpServlet {
             String path = req.getContextPath() + "?employeePage="+1+"&&departmentPage"+1;
             try {
                 resp.getWriter().write(req.getParameter("employeeDelete"));
-                employeeDB.delete(Integer.parseInt(req.getParameter("employeeDelete")));
+                EmployeeDAO.delete(Integer.parseInt(req.getParameter("employeeDelete")));
             }catch (Exception e){
 
             }
@@ -109,7 +109,7 @@ public class newVersion extends HttpServlet {
             String path = req.getContextPath() + "?employeePage="+1+"&&departmentPage"+1;
             try {
                 resp.getWriter().write(req.getParameter("departmentDelete"));
-                departmentDB.delete(Integer.parseInt(req.getParameter("departmentDelete")));
+                DepartmentDAO.delete(Integer.parseInt(req.getParameter("departmentDelete")));
             }catch (Exception e){
 
             }

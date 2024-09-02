@@ -1,4 +1,4 @@
-package ForWork.util;
+package SimpleWebsiteForDepartmentControl.util;
 
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public final class MyConnection {
+public final class SimpleConnectionPool {
     private static final String URL_KEY ="db.url";
     private static final String USERNAME_KEY = "db.username";
     private static final String PASSWORD_KEY ="db.password";
@@ -27,7 +27,7 @@ public final class MyConnection {
 
         for (int i =0; i < size; i++){
             Connection connection = open();
-            var proxyConnection = (Connection) Proxy.newProxyInstance(MyConnection.class.getClassLoader(),
+            var proxyConnection = (Connection) Proxy.newProxyInstance(SimpleConnectionPool.class.getClassLoader(),
                     new Class[]{Connection.class},
                     (proxy, method, args) -> method.getName().equals("close") ?
                             pool.add((Connection) proxy) :
@@ -51,7 +51,7 @@ public final class MyConnection {
         }
     }
 
-    private MyConnection(){
+    private SimpleConnectionPool(){
 
     }
 }

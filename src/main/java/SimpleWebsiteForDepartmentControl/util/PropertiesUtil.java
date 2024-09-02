@@ -1,4 +1,4 @@
-package ForWork.util;
+package SimpleWebsiteForDepartmentControl.util;
 
 import java.io.IOException;
 import java.util.Properties;

@@ -1,6 +1,6 @@
-package ForWork.forUsers2;
+package SimpleWebsiteForDepartmentControl.DAO;
 
-import ForWork.util.MyConnection;
+import SimpleWebsiteForDepartmentControl.util.SimpleConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,13 +8,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class departmentDB {
+public class DepartmentDAO {
 
     public static int insert(Department department){
 
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get())
+            try (Connection connection = SimpleConnectionPool.get())
             {
                 String sql = "INSERT INTO department (name) Values (?)";
                 try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
@@ -35,7 +35,7 @@ public class departmentDB {
         int count = 0;
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get()){
+            try (Connection connection = SimpleConnectionPool.get()){
 
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT count(*) FROM department");
@@ -55,7 +55,7 @@ public class departmentDB {
 
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get()){
+            try (Connection connection = SimpleConnectionPool.get()){
 
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM department");
@@ -76,7 +76,7 @@ public class departmentDB {
 
         try{
             Class.forName("org.postgresql.Driver");
-            try (Connection connection = MyConnection.get()){
+            try (Connection connection = SimpleConnectionPool.get()){
 
                 String sql = "DELETE FROM department WHERE id = ?";
                 try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){

@@ -1,4 +1,4 @@
-package ForWork.forUsers2;
+package SimpleWebsiteForDepartmentControl.DAO;
 
 import java.io.Serializable;
 
